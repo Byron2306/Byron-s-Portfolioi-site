@@ -1,0 +1,124 @@
+name: Update portfolio projects
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/update-portfolio-projects.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-portfolio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Add Dogs of War and Drenched
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          app = Path('app.js')
+          index = Path('index.html')
+          readme = Path('README.md')
+
+          text = app.read_text(encoding='utf-8')
+
+          insert_block = '''
+  {
+    id: "dogs-of-war",
+    title: "Dogs of War",
+    kicker: "A historically grounded World War II trading-card game built around faction philosophy",
+    status: "Published digital serious game",
+    categoryLabel: "Educational game",
+    categories: ["game-systems", "education", "evidence"],
+    featured: false,
+    summary: "A digital adaptation of the historically themed serious trading-card game that translates World War II national roles, motivations and strategic behaviours into emergent faction mechanics.",
+    problem: "History games often reduce complex national motivations to generic combat bonuses, making the lesson decorative rather than systemic.",
+    contribution: "Dogs of War encodes six faction philosophies, a three-lane battlefield and a combat triangle into the rules themselves, turning interpretation of historical behaviour into strategic play.",
+    role: "Co-originator, game-system designer, historical framework architect and digital adaptation lead.",
+    signature: "Historical interpretation is not delivered after the match. It is embedded in faction goals, lane pressure, combat relationships and the route to defeating the opposing General.",
+    tags: ["World War II", "Trading-card game", "Faction systems", "Historical interpretation", "Serious games", "Published framework"],
+    images: [
+      "https://raw.githubusercontent.com/Byron2306/Dogs-of-War/main/dow%203.png",
+      "https://raw.githubusercontent.com/Byron2306/Dogs-of-War/main/fig%207.png",
+      "https://raw.githubusercontent.com/Byron2306/Dogs-of-War/main/fig%208.png"
+    ],
+    siteUrl: "https://byron2306.github.io/Dogs-of-War/"
+  },
+  {
+    id: "drenched",
+    title: "Drenched",
+    kicker: "A browser-based retro raycasting game prototype with textured first-person exploration",
+    status: "Playable web prototype",
+    categoryLabel: "Game systems",
+    categories: ["game-systems"],
+    featured: false,
+    summary: "A compact first-person browser prototype built around a custom raycasting renderer, keyboard movement and textured environments.",
+    problem: "Modern web games often depend on large engines even when the design question is fundamentally about rendering, movement and spatial feel.",
+    contribution: "Drenched demonstrates a deliberately lean approach: a browser canvas, custom raycasting logic, direct controls and hand-mapped textures used to prove a first-person interaction loop without a heavyweight engine.",
+    role: "Originator, renderer experimenter, gameplay programmer and prototype developer.",
+    signature: "A small technical game laboratory where the core illusion of 3D space is built directly from code rather than delegated to a full engine.",
+    tags: ["Raycasting", "Browser game", "First-person prototype", "Canvas rendering", "Retro systems", "Custom engine"],
+    images: [
+      "https://raw.githubusercontent.com/Byron2306/Drenched/main/title.png"
+    ],
+    siteUrl: "https://byron2306.github.io/Drenched/"
+  },
+'''
+
+          if 'id: "dogs-of-war"' not in text:
+              marker = '  {\n    id: "alice-valkyrie-star",'
+              if marker not in text:
+                  raise SystemExit('Could not find Alice insertion marker in app.js')
+              text = text.replace(marker, insert_block + marker, 1)
+
+          text = text.replace('The orbit was always wider than the flagships: Dogs of War, Prosper, CiteSaga, WorkReady and SheriffFlow kept proving that the same design instinct could move across pedagogy, evidence, play and institutional tooling.',
+                              'The orbit was always wider than the flagships: Dogs of War, Prosper, CiteSaga, WorkReady and SheriffFlow kept proving that the same design instinct could move across pedagogy, evidence, play and institutional tooling.')
+          if 'Dogs of War returned as another reminder' not in text:
+              needle = '  "MERGER brought the same instinct back into academic integrity: detection signals, citation compliance, policy alignment, artifact traces and supervisor critique now sit in one forensic chamber instead of five disconnected tabs and a prayer.",\n'
+              addition = needle + '  "Dogs of War returned as another reminder that Byron has been encoding ideas into systems for years: historical motive became faction logic, and interpretation became something players could contest across a battlefield.",\n  "Drenched took the opposite route to our giant architectures: strip the engine away, keep the canvas, build the raycasting illusion directly, and see how much world can emerge from a very small machine.",\n'
+              if needle in text:
+                  text = text.replace(needle, addition, 1)
+
+          app.write_text(text, encoding='utf-8')
+
+          html = index.read_text(encoding='utf-8')
+          html = re.sub(r'<strong>\d+</strong><span>flagship platforms</span>', '<strong>17</strong><span>flagship platforms</span>', html, count=1)
+          index.write_text(html, encoding='utf-8')
+
+          if readme.exists():
+              md = readme.read_text(encoding='utf-8')
+              if 'Dogs of War' not in md.split('## Recovered game worlds')[-1]:
+                  md = md.rstrip() + '''
+
+## Additional live games
+
+- **Dogs of War** — a published World War II serious trading-card game and digital adaptation with six faction philosophies, a three-lane battlefield and historically grounded strategic play.
+- **Drenched** — a compact browser raycasting prototype exploring textured first-person movement and direct canvas rendering.
+'''
+                  readme.write_text(md + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit portfolio update
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "portfolio-bot"
+          git config user.email "portfolio-bot@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No portfolio changes needed."
+          else
+            git add app.js index.html README.md
+            git commit -m "Add Dogs of War and Drenched to portfolio"
+            git push
+          fi
