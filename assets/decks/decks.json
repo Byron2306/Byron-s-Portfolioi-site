@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "sophia-governed-intelligence",
+    "title": "Sophia Governed Intelligence",
+    "description": "Sophia / constitutional AI evidence deck",
+    "systems": [
+      "SOPHIA-AI"
+    ],
+    "slides": 17,
+    "href": "assets/decks/sophia-governed-intelligence.pptx",
+    "thumb": "assets/decks/thumbs/sophia-governed-intelligence.webp",
+    "titles": [
+      "Sophia Pilot Constitutional Layer Test",
+      "Sophia Protocol v1.1 Landmark",
+      "Sophia Multimodal Cross-Scale Stability",
+      "Sophia Protocol v1.2 Semantic Hardening",
+      "First Ethical Proof",
+      "Cryptographic adversarial layer",
+      "Authenticated constitutional boundary trial"
+    ]
+  },
+  {
+    "slug": "sovereign-pedagogy",
+    "title": "Sovereign Pedagogy",
+    "description": "Pedagogical governance and authorship-boundary deck",
+    "systems": [
+      "SOPHIA-AI",
+      "HOMS"
+    ],
+    "slides": 14,
+    "href": "assets/decks/sovereign-pedagogy.pptx",
+    "thumb": "assets/decks/thumbs/sovereign-pedagogy.webp",
+    "titles": [
+      "Sophia Pilot Constitutional Layer Test",
+      "Sophia Protocol v1.1 Landmark",
+      "Smart Assessor test cycles"
+    ]
+  },
+  {
+    "slug": "arda-substrate",
+    "title": "The ARDA Substrate",
+    "description": "Sovereign substrate and constitutional enforcement deck",
+    "systems": [
+      "ARDA"
+    ],
+    "slides": 17,
+    "href": "assets/decks/arda-substrate.pptx",
+    "thumb": "assets/decks/thumbs/arda-substrate.webp",
+    "titles": [
+      "Adversarial Mega Gauntlet",
+      "Triune Chorus distributed veto",
+      "Epoch and notation replay guard"
+    ]
+  },
+  {
+    "slug": "inference-inversion",
+    "title": "Inference Inversion",
+    "description": "BEAST inference-economy and proof-local compute deck",
+    "systems": [
+      "BEAST"
+    ],
+    "slides": 15,
+    "href": "assets/decks/inference-inversion.pptx",
+    "thumb": "assets/decks/thumbs/inference-inversion.webp",
+    "titles": [
+      "Provider-family blind test",
+      "All-route hidden-cost gauntlet",
+      "Tiny model crystal amplification",
+      "Proof-local Phase 4 chain trial"
+    ]
+  },
+  {
+    "slug": "aatr-taxonomy",
+    "title": "AATR Core Attack Vector Taxonomy",
+    "description": "Adversarial AI Threat Registry and attack-vector taxonomy deck",
+    "systems": [
+      "SERAPH"
+    ],
+    "slides": 47,
+    "href": "assets/decks/aatr-taxonomy.pptx",
+    "thumb": "assets/decks/thumbs/aatr-taxonomy.webp",
+    "titles": [
+      "Seraph MITRE ATT&CK S5 Coverage Attestation",
+      "Live GPT-4o deception engagement",
+      "AAB Rev14 cross-provider Llamageddon matrix",
+      "Local Qwen 0.5B AAB matrix",
+      "Last Chord Llamageddon Live 002",
+      "Last Chord Zeek / PCAP evidence chain",
+      "AAB regression harness",
+      "Threat pipeline evaluation",
+      "Harmonic cadence engine gauntlet",
+      "MITRE and integration validation"
+    ]
+  },
+  {
+    "slug": "architecture-over-scale",
+    "title": "Architecture Over Scale",
+    "description": "Architecture-first evidence and systems doctrine deck",
+    "systems": [
+      "BEAST",
+      "SOPHIA-AI",
+      "SERAPH"
+    ],
+    "slides": 14,
+    "href": "assets/decks/architecture-over-scale.pptx",
+    "thumb": "assets/decks/thumbs/architecture-over-scale.webp",
+    "titles": [
+      "Tiny model crystal amplification",
+      "Sophia Multimodal Cross-Scale Stability",
+      "Provider-family blind test"
+    ]
+  },
+  {
+    "slug": "crystal-box-assessment",
+    "title": "The Crystal Box Assessment",
+    "description": "Assessment, evaluator and proof-box methodology deck",
+    "systems": [
+      "BEAST",
+      "HOMS",
+      "SOPHIA-AI"
+    ],
+    "slides": 14,
+    "href": "assets/decks/crystal-box-assessment.pptx",
+    "thumb": "assets/decks/thumbs/crystal-box-assessment.webp",
+    "titles": [
+      "Tiny model crystal amplification",
+      "Smart Assessor test cycles",
+      "Sophia Protocol v1.2 Semantic Hardening"
+    ]
+  },
+  {
+    "slug": "vamp-production-readiness",
+    "title": "VAMP 1.0 Production Readiness",
+    "description": "VAMP operational readiness and academic evidence deck",
+    "systems": [
+      "VAMP"
+    ],
+    "slides": 12,
+    "href": "assets/decks/vamp-production-readiness.pptx",
+    "thumb": "assets/decks/thumbs/vamp-production-readiness.webp",
+    "titles": [
+      "Evidence stewardship run"
+    ]
+  }
+]
