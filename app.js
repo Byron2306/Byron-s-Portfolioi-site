@@ -1,6 +1,339 @@
 
 const screenshotBase = "assets/screenshots/";
 
+const videoLibrary = [
+  {
+    "title": "KnowEdge MERGER - Architecting the Socratic AI",
+    "url": "https://www.youtube.com/watch?v=sS-qBjlikO4",
+    "videoId": "sS-qBjlikO4",
+    "views": "7 views",
+    "age": "1 month ago",
+    "duration": "6 minutes, 32 seconds",
+    "project": "KnowEdge Merger",
+    "kind": "Architecture walkthrough",
+    "thumb": "https://i.ytimg.com/vi/sS-qBjlikO4/hqdefault.jpg"
+  },
+  {
+    "title": "Hybrid Online Marking System (HOMS) - Architecting the Assessment Feedback Loop",
+    "url": "https://www.youtube.com/watch?v=XoFnA204oCs",
+    "videoId": "XoFnA204oCs",
+    "views": "10 views",
+    "age": "1 month ago",
+    "duration": "8 minutes, 23 seconds",
+    "project": "HOMS / Smart Assessor",
+    "kind": "Assessment and pedagogy",
+    "thumb": "https://i.ytimg.com/vi/XoFnA204oCs/hqdefault.jpg"
+  },
+  {
+    "title": "Sophia AI - Governed Lawful Intelligence",
+    "url": "https://www.youtube.com/watch?v=2Rc3XLTO9tk",
+    "videoId": "2Rc3XLTO9tk",
+    "views": "12 views",
+    "age": "1 month ago",
+    "duration": "7 minutes, 46 seconds",
+    "project": "Sophia-AI",
+    "kind": "Constitutional AI proof video",
+    "thumb": "https://i.ytimg.com/vi/2Rc3XLTO9tk/hqdefault.jpg"
+  },
+  {
+    "title": "Evidex - Compliance, Evidence and Auditing Engine",
+    "url": "https://www.youtube.com/watch?v=2xscRPgMmCA",
+    "videoId": "2xscRPgMmCA",
+    "views": "8 views",
+    "age": "1 month ago",
+    "duration": "9 minutes, 21 seconds",
+    "project": "EVIDEX",
+    "kind": "Workflow walkthrough",
+    "thumb": "https://i.ytimg.com/vi/2xscRPgMmCA/hqdefault.jpg"
+  },
+  {
+    "title": "Hivenance - Multi Agent Swarm Crypto Trader",
+    "url": "https://www.youtube.com/watch?v=Ld27IMWXaRE",
+    "videoId": "Ld27IMWXaRE",
+    "views": "16 views",
+    "age": "1 month ago",
+    "duration": "9 minutes, 13 seconds",
+    "project": "Hivenance",
+    "kind": "Governed sandbox walkthrough",
+    "thumb": "https://i.ytimg.com/vi/Ld27IMWXaRE/hqdefault.jpg"
+  },
+  {
+    "title": "VAMP - Virtual Academic Management Partner",
+    "url": "https://www.youtube.com/watch?v=IO7tgKvfQvA",
+    "videoId": "IO7tgKvfQvA",
+    "views": "5 views",
+    "age": "1 month ago",
+    "duration": "9 minutes, 20 seconds",
+    "project": "VAMP",
+    "kind": "Academic workflow walkthrough",
+    "thumb": "https://i.ytimg.com/vi/IO7tgKvfQvA/hqdefault.jpg"
+  },
+  {
+    "title": "Trapping GPT 4o -  Reverse Engineering a 60,000 Token Deception",
+    "url": "https://www.youtube.com/watch?v=wvEeCqivKc8",
+    "videoId": "wvEeCqivKc8",
+    "views": "38 views",
+    "age": "2 months ago",
+    "duration": "7 minutes, 14 seconds",
+    "project": "Seraph AI",
+    "kind": "Adversarial / governed execution proof",
+    "thumb": "https://i.ytimg.com/vi/wvEeCqivKc8/hqdefault.jpg"
+  },
+  {
+    "title": "The LILITH Rogue AI framework",
+    "url": "https://www.youtube.com/watch?v=r1XtJObhKSk",
+    "videoId": "r1XtJObhKSk",
+    "views": "119 views",
+    "age": "2 months ago",
+    "duration": "7 minutes, 34 seconds",
+    "project": "Seraph AI",
+    "kind": "Adversarial / governed execution proof",
+    "thumb": "https://i.ytimg.com/vi/r1XtJObhKSk/hqdefault.jpg"
+  },
+  {
+    "title": "The trials of Sophia - reclaiming wisdom from sophistry",
+    "url": "https://www.youtube.com/watch?v=NaKf4rYSKyw",
+    "videoId": "NaKf4rYSKyw",
+    "views": "11 views",
+    "age": "3 months ago",
+    "duration": "7 minutes, 35 seconds",
+    "project": "Sophia-AI",
+    "kind": "Constitutional AI proof video",
+    "thumb": "https://i.ytimg.com/vi/NaKf4rYSKyw/hqdefault.jpg"
+  },
+  {
+    "title": "The little AI that could - could say no, not once, but multiple times",
+    "url": "https://www.youtube.com/watch?v=gVzIbgnw_AY",
+    "videoId": "gVzIbgnw_AY",
+    "views": "24 views",
+    "age": "3 months ago",
+    "duration": "8 minutes, 27 seconds",
+    "project": "Sophia-AI",
+    "kind": "Constitutional AI proof video",
+    "thumb": "https://i.ytimg.com/vi/gVzIbgnw_AY/hqdefault.jpg"
+  },
+  {
+    "title": "Machine metacognition and stewardship - Adapting educational assessment ecology",
+    "url": "https://www.youtube.com/watch?v=-fjrmAJlkmw",
+    "videoId": "-fjrmAJlkmw",
+    "views": "8 views",
+    "age": "3 months ago",
+    "duration": "5 minutes, 58 seconds",
+    "project": "HOMS / Smart Assessor",
+    "kind": "Assessment and pedagogy",
+    "thumb": "https://i.ytimg.com/vi/-fjrmAJlkmw/hqdefault.jpg"
+  },
+  {
+    "title": "The post Socratic AI",
+    "url": "https://www.youtube.com/watch?v=8xH1NxCfWNM",
+    "videoId": "8xH1NxCfWNM",
+    "views": "19 views",
+    "age": "3 months ago",
+    "duration": "7 minutes, 56 seconds",
+    "project": "Sophia-AI",
+    "kind": "Constitutional AI proof video",
+    "thumb": "https://i.ytimg.com/vi/8xH1NxCfWNM/hqdefault.jpg"
+  },
+  {
+    "title": "Manifesto of the Lawful Reasoning Organism",
+    "url": "https://www.youtube.com/watch?v=WrrOjRh2DzA",
+    "videoId": "WrrOjRh2DzA",
+    "views": "12 views",
+    "age": "3 months ago",
+    "duration": "7 minutes, 55 seconds",
+    "project": "Sophia-AI",
+    "kind": "Constitutional AI proof video",
+    "thumb": "https://i.ytimg.com/vi/WrrOjRh2DzA/hqdefault.jpg"
+  },
+  {
+    "title": "A Machine That Understands Law - Artificial Operating Systems",
+    "url": "https://www.youtube.com/watch?v=HL3YHDba6Lo",
+    "videoId": "HL3YHDba6Lo",
+    "views": "20 views",
+    "age": "3 months ago",
+    "duration": "6 minutes, 21 seconds",
+    "project": "ARDA OS",
+    "kind": "Sovereign substrate / lawful systems video",
+    "thumb": "https://i.ytimg.com/vi/HL3YHDba6Lo/hqdefault.jpg"
+  },
+  {
+    "title": "The Ainulindale update - Coherence over attestation",
+    "url": "https://www.youtube.com/watch?v=VTnolbEET0c",
+    "videoId": "VTnolbEET0c",
+    "views": "8 views",
+    "age": "3 months ago",
+    "duration": "7 minutes, 57 seconds",
+    "project": "ARDA OS",
+    "kind": "Sovereign substrate / lawful systems video",
+    "thumb": "https://i.ytimg.com/vi/VTnolbEET0c/hqdefault.jpg"
+  },
+  {
+    "title": "Arda Substrate - Machine Is Law, No Life Without Law",
+    "url": "https://www.youtube.com/watch?v=ABanVUJ1UjQ",
+    "videoId": "ABanVUJ1UjQ",
+    "views": "30 views",
+    "age": "3 months ago",
+    "duration": "7 minutes, 53 seconds",
+    "project": "ARDA OS",
+    "kind": "Sovereign substrate / lawful systems video",
+    "thumb": "https://i.ytimg.com/vi/ABanVUJ1UjQ/hqdefault.jpg"
+  },
+  {
+    "title": "The Harmonic Governance Layer",
+    "url": "https://www.youtube.com/watch?v=wSupCC985jk",
+    "videoId": "wSupCC985jk",
+    "views": "14 views",
+    "age": "3 months ago",
+    "duration": "8 minutes, 5 seconds",
+    "project": "Seraph AI",
+    "kind": "Adversarial / governed execution proof",
+    "thumb": "https://i.ytimg.com/vi/wSupCC985jk/hqdefault.jpg"
+  },
+  {
+    "title": "SERAPH AI - Architecting the Governed Execution Fabric",
+    "url": "https://www.youtube.com/watch?v=eFpzYmq-uQ0&t=4s",
+    "videoId": "eFpzYmq-uQ0",
+    "views": "40 views",
+    "age": "3 months ago",
+    "duration": "8 minutes, 39 seconds",
+    "project": "Seraph AI",
+    "kind": "Adversarial / governed execution proof",
+    "thumb": "https://i.ytimg.com/vi/eFpzYmq-uQ0/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 6: Glam metal",
+    "url": "https://www.youtube.com/watch?v=KwQctLclGu4",
+    "videoId": "KwQctLclGu4",
+    "views": "16 views",
+    "age": "1 year ago",
+    "duration": "4 minutes, 10 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/KwQctLclGu4/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 4: Power metal",
+    "url": "https://www.youtube.com/watch?v=wFApNNzdV_E",
+    "videoId": "wFApNNzdV_E",
+    "views": "4 views",
+    "age": "1 year ago",
+    "duration": "4 minutes, 4 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/wFApNNzdV_E/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 8: Progressive metal",
+    "url": "https://www.youtube.com/watch?v=-RyeRcs9_00",
+    "videoId": "-RyeRcs9_00",
+    "views": "2 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 44 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/-RyeRcs9_00/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 9: Industrial metal",
+    "url": "https://www.youtube.com/watch?v=asbU22GeZtk",
+    "videoId": "asbU22GeZtk",
+    "views": "3 views",
+    "age": "1 year ago",
+    "duration": "1 minute, 59 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/asbU22GeZtk/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 10: Nu metal",
+    "url": "https://www.youtube.com/watch?v=gLfhI2przhM",
+    "videoId": "gLfhI2przhM",
+    "views": "18 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 21 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/gLfhI2przhM/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 5: doom metal",
+    "url": "https://www.youtube.com/watch?v=eu3Dah3cpr8",
+    "videoId": "eu3Dah3cpr8",
+    "views": "3 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 44 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/eu3Dah3cpr8/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 7: folk metal",
+    "url": "https://www.youtube.com/watch?v=vtzy7AciYOk",
+    "videoId": "vtzy7AciYOk",
+    "views": "11 views",
+    "age": "1 year ago",
+    "duration": "4 minutes, 7 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/vtzy7AciYOk/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 2: death metal",
+    "url": "https://www.youtube.com/watch?v=XgG0dRBymx0",
+    "videoId": "XgG0dRBymx0",
+    "views": "5 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 28 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/XgG0dRBymx0/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 1: black metal",
+    "url": "https://www.youtube.com/watch?v=FMlzunEOYdI",
+    "videoId": "FMlzunEOYdI",
+    "views": "21 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 25 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/FMlzunEOYdI/hqdefault.jpg"
+  },
+  {
+    "title": "Metal Survivors - Stage 3: thrash metal",
+    "url": "https://www.youtube.com/watch?v=uV-qnZiK1vc",
+    "videoId": "uV-qnZiK1vc",
+    "views": "2 views",
+    "age": "1 year ago",
+    "duration": "3 minutes, 42 seconds",
+    "project": "Metal Survivors",
+    "kind": "Gameplay / stage track",
+    "thumb": "https://i.ytimg.com/vi/uV-qnZiK1vc/hqdefault.jpg"
+  },
+  {
+    "title": "Soma Cruz single weapon - Vampire Survivors",
+    "url": "https://www.youtube.com/watch?v=YEqq9nN2SVM",
+    "videoId": "YEqq9nN2SVM",
+    "views": "107 views",
+    "age": "1 year ago",
+    "duration": "18 minutes",
+    "project": "Game reference",
+    "kind": "Survivor-like study",
+    "thumb": "https://i.ytimg.com/vi/YEqq9nN2SVM/hqdefault.jpg"
+  },
+  {
+    "title": "Astronomy Arts Competition - NWU",
+    "url": "https://www.youtube.com/watch?v=c0nZBsAy9gU",
+    "videoId": "c0nZBsAy9gU",
+    "views": "314 views",
+    "age": "2 years ago",
+    "duration": "2 minutes, 52 seconds",
+    "project": "NWU / Outreach",
+    "kind": "Outreach artifact",
+    "thumb": "https://i.ytimg.com/vi/c0nZBsAy9gU/hqdefault.jpg"
+  }
+];
+
 function imageSrc(imageName) {
   return /^(https?:|data:|blob:)/i.test(imageName) ? imageName : `${screenshotBase}${imageName}`;
 }
@@ -2182,6 +2515,56 @@ function escapeAttr(value) {
   return String(value).replace(/"/g, "&quot;");
 }
 
+
+function youtubeThumb(video) {
+  return video.thumb || `https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`;
+}
+
+function videoCardMarkup(video) {
+  const meta = [video.duration, video.views, video.age].filter(Boolean).join(" · ");
+  return `
+    <article class="video-card reveal">
+      <a href="${video.url}" target="_blank" rel="noreferrer" aria-label="Watch ${escapeAttr(video.title)}">
+        <span class="video-thumb" style="--thumb:url('${youtubeThumb(video)}')">
+          <span class="play-orb">▶</span>
+        </span>
+        <span class="video-copy">
+          <small>${video.project} · ${video.kind}</small>
+          <strong>${video.title}</strong>
+          <span>${meta}</span>
+        </span>
+      </a>
+    </article>
+  `;
+}
+
+function projectVideoMatches(project) {
+  const normalizedTitle = project.title.toLowerCase();
+  const aliases = {
+    "edgek beast": ["BEAST"],
+    "sophia-ai": ["Sophia-AI"],
+    "seraph ai": ["Seraph AI"],
+    "arda os": ["ARDA OS"],
+    "knowedge merger": ["KnowEdge Merger"],
+    "vamp": ["VAMP"],
+    "homs / smart assessor": ["HOMS / Smart Assessor"],
+    "evidex": ["EVIDEX"],
+    "hivenance": ["Hivenance"],
+    "outlook browser agent": ["Outlook Browser Agent"],
+    "metal survivors": ["Metal Survivors"]
+  };
+  const allowed = aliases[normalizedTitle] || [project.title];
+  return videoLibrary.filter(video => allowed.includes(video.project));
+}
+
+function renderVideoVault() {
+  const target = document.querySelector("#video-vault-grid");
+  const count = document.querySelector("#video-count-pill");
+  if (!target) return;
+  target.innerHTML = videoLibrary.map(videoCardMarkup).join("");
+  if (count) count.textContent = `${videoLibrary.length} videos mapped`;
+}
+
 function createProjectCard(project) {
   const article = document.createElement("article");
   article.className = `system-card theme-${project.id} reveal`;
@@ -2263,6 +2646,13 @@ function openProject(project) {
   document.querySelector("#dialog-problem").textContent = project.problem;
   document.querySelector("#dialog-contribution").textContent = project.contribution;
   document.querySelector("#dialog-tags").innerHTML = project.tags.map(tag => `<span>${tag}</span>`).join("");
+  const dialogVideoLinks = document.querySelector("#dialog-video-links");
+  const matches = projectVideoMatches(project);
+  if (dialogVideoLinks) {
+    dialogVideoLinks.innerHTML = matches.length
+      ? `<h3>Related videos</h3><div>${matches.slice(0, 6).map(video => `<a href="${video.url}" target="_blank" rel="noreferrer">▶ ${video.title}</a>`).join("")}</div>`
+      : "";
+  }
   const liveSite = document.querySelector("#dialog-live-site");
   if (project.siteUrl) {
     liveSite.hidden = false;
@@ -2354,6 +2744,7 @@ function trackNav() {
 
 renderProjects();
 renderProofs();
+renderVideoVault();
 renderContacts();
 requestAnimationFrame(() => {
   observeReveals();
