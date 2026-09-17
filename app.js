@@ -577,7 +577,7 @@ const projects = [
     contribution: "ARDA encodes red-line vetoes, distributed chorus health, replay guards, constitutional seals and external witness logic into the enforcement substrate.",
     tags: ["Sovereign seal", "Veto", "Witnesses", "Attestation"],
     images: ["arda-1.webp", "arda-2.webp", "arda-3.webp", "arda-4.webp"],
-    siteUrl: "https://byron2306.github.io/Integritas-Mechanicus/",
+    siteUrl: "https://byron2306.github.io/Arda-OS-page/",
     githubUrl: "https://github.com/Byron2306/Integritas-Mechanicus",
     palette: ["#ffc85c", "#7fb2ff"],
     symbol: "♜"
