@@ -13,3 +13,91 @@
 .dio-principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.dio-principles article{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;padding:15px;border:1px solid rgba(138,190,218,.14);border-radius:14px;background:rgba(6,16,25,.7)}.dio-principles article>span{color:#d7b86f;font-size:1.05rem}.dio-principles h3{margin:0;font-size:.92rem}.dio-principles p{margin:4px 0 0;color:var(--muted);font-size:.82rem;line-height:1.42}
 @media(max-width:1080px){.dio-summary{grid-template-columns:110px minmax(0,1fr)}.dio-summary-signal{grid-column:1/-1;min-height:0;grid-template-columns:auto 1fr auto;column-gap:16px;align-items:center}.dio-summary-signal b{margin-top:0;text-align:right}.dio-intro{grid-template-columns:1fr}.dio-proof-signal{min-height:0;grid-template-columns:auto 1fr;column-gap:16px;align-items:center}.dio-proof-signal strong{grid-row:span 2}.dio-architecture{grid-template-columns:repeat(3,minmax(0,1fr))}.dio-architecture::before{display:none}.dio-principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.dio-panel{border-radius:18px}.dio-summary{grid-template-columns:76px minmax(0,1fr);gap:14px;padding:16px}.dio-summary-copy h2{font-size:clamp(1.5rem,8vw,2.4rem)}.dio-summary-copy>p:last-child{font-size:.86rem}.dio-summary-signal{grid-template-columns:auto 1fr;padding:12px}.dio-summary-signal b{grid-column:1/-1;text-align:left}.dio-expanded{padding:20px 15px}.dio-copy h3{font-size:clamp(1.8rem,10vw,2.8rem)}.dio-actions{display:grid;grid-template-columns:1fr}.dio-btn{width:100%}.dio-proof-signal{grid-template-columns:auto minmax(0,1fr);padding:16px}.dio-architecture{grid-template-columns:1fr}.dio-architecture article{min-height:0}.dio-architecture strong{margin-top:9px}.dio-loop{display:flex;flex-wrap:wrap;border-radius:16px}.dio-principles{grid-template-columns:1fr}}
+
+
+/* DIO flagship-card refit */
+.dio-summary-card{
+  grid-template-columns:minmax(280px,.95fr) minmax(0,1.25fr) minmax(130px,.34fr);
+  gap:clamp(18px,2.4vw,30px);
+  padding:clamp(16px,2vw,24px);
+  align-items:stretch;
+}
+.dio-summary-visual{
+  position:relative;
+  min-height:280px;
+  overflow:hidden;
+  border-radius:20px;
+  border:1px solid rgba(214,178,103,.28);
+  background:#03070b;
+  box-shadow:inset 0 0 50px rgba(214,178,103,.04);
+}
+.dio-summary-visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 55%,rgba(2,7,13,.78));
+}
+.dio-summary-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.dio-status-pill{
+  position:absolute;
+  z-index:1;
+  left:16px;
+  bottom:16px;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 12px;
+  border:1px solid rgba(214,178,103,.38);
+  border-radius:999px;
+  color:#f4d98d;
+  background:rgba(4,10,16,.82);
+  backdrop-filter:blur(8px);
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+.dio-summary-copy-card{
+  align-self:center;
+  padding-block:10px;
+}
+.dio-summary-copy-card h2{
+  font-size:clamp(2rem,4.5vw,4.8rem);
+}
+.dio-open-label{
+  display:inline-flex;
+  margin-top:20px;
+  color:#b6ff66;
+  font-size:.78rem;
+  font-weight:950;
+  letter-spacing:.12em;
+}
+.dio-panel[open] .dio-open-label{
+  font-size:0;
+}
+.dio-panel[open] .dio-open-label::after{
+  content:"CLOSE ARCHITECTURE ↑";
+  font-size:.78rem;
+}
+.dio-summary-signal-card{
+  align-self:center;
+  min-height:150px;
+}
+
+@media(max-width:1080px){
+  .dio-summary-card{grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr)}
+  .dio-summary-signal-card{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .dio-summary-card{grid-template-columns:1fr;padding:14px;gap:14px}
+  .dio-summary-visual{min-height:0;aspect-ratio:1.2/1;border-radius:18px}
+  .dio-status-pill{left:12px;bottom:12px;max-width:calc(100% - 24px);font-size:.6rem;letter-spacing:.1em}
+  .dio-summary-copy-card{padding:4px 4px 0}
+  .dio-summary-copy-card h2{font-size:clamp(2rem,10vw,3rem)}
+  .dio-summary-signal-card{grid-column:auto;min-height:0;margin-top:2px}
+}
