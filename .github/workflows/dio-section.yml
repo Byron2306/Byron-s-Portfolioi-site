@@ -1,4 +1,4 @@
-name: Add DIO architecture section
+name: Patch DIO portfolio index
 
 on:
   push:
@@ -11,112 +11,27 @@ permissions:
   contents: write
 
 jobs:
-  dio-section:
+  patch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
 
-      - name: RED - prove DIO section is absent
+      - name: Patch and verify index
         shell: bash
-        run: |
-          set +e
-          python - <<'PY'
-          from pathlib import Path
-          s = Path('index.html').read_text(encoding='utf-8')
-          assert 'id="dio"' in s, 'DIO section missing'
-          assert 'href="#dio"' in s, 'DIO nav link missing'
-          PY
-          code=$?
-          set -e
-          if [ "$code" -eq 0 ]; then
-            echo 'Expected pre-change check to fail.'
-            exit 1
-          fi
-          echo 'RED confirmed: DIO section and nav are absent.'
+        run: python scripts/patch_dio_section.py
 
-      - name: Implement DIO architecture section
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('index.html')
-          s = p.read_text(encoding='utf-8')
-          s = s.replace('<link rel="stylesheet" href="styles.css" />', '<link rel="stylesheet" href="styles.css" />\n  <link rel="stylesheet" href="dio-section.css?v=20260917-1" />', 1)
-          nav_old = '          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
-          nav_new = '          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#dio"><span>◉</span>DIO</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
-          if nav_old not in s:
-              raise SystemExit('navigation insertion marker not found')
-          s = s.replace(nav_old, nav_new, 1)
-          marker = '        <section class="section-panel" id="flagship" aria-labelledby="flagship-title">'
-          if marker not in s:
-              raise SystemExit('flagship insertion marker not found')
-          dio = '''        <section class="section-panel dio-panel" id="dio" aria-labelledby="dio-title">
-          <div class="dio-atmosphere" aria-hidden="true"></div>
-          <div class="dio-intro reveal">
-            <div class="dio-mark-shell">
-              <img class="dio-wordmark" src="assets/identity/dio-wordmark.svg" alt="DIO" />
-              <span>Deterministic Intelligence Orchestration</span>
-            </div>
-            <div class="dio-copy">
-              <p class="eyebrow"><span class="status-dot"></span> Portfolio operating architecture</p>
-              <h2 id="dio-title">The architecture behind the portfolio.</h2>
-              <p class="dio-lede">DIO is a proof-carrying intelligence operating architecture: one governed organism that composes reusable capability into products, executes within explicit authority, records what happened, and carries evidence forward.</p>
-              <p>Rather than treating each project as an isolated app, DIO separates profiles, work patterns, governed executors, products and proof so capability can be reused without silently inheriting permission.</p>
-              <div class="dio-actions">
-                <a class="dio-btn dio-btn-primary" href="https://byron2306.github.io/DIO-Workflows/" target="_blank" rel="noreferrer">Enter DIO Workflows ↗</a>
-                <a class="dio-btn" href="https://byron2306.github.io/DIO-Workflows/products/" target="_blank" rel="noreferrer">Explore 68 products ↗</a>
-              </div>
-            </div>
-            <aside class="dio-proof-signal" aria-label="DIO portfolio signal"><strong>68</strong><span>canon-level product incarnations</span><small>53 base canon + 15 canon extensions</small></aside>
-          </div>
-          <div class="dio-architecture reveal" aria-label="DIO architecture flow">
-            <article><small>01</small><strong>Profiles</strong><span>Domain, authority, connectors, outputs and commercial context become explicit configuration.</span></article>
-            <article><small>02</small><strong>Work patterns</strong><span>Reusable evidence, obligation and proof contracts describe governed work.</span></article>
-            <article><small>03</small><strong>Organs &amp; executors</strong><span>Bounded capability performs work through named execution surfaces and gates.</span></article>
-            <article><small>04</small><strong>Products &amp; incarnations</strong><span>Capability is compiled into buyer-facing forms without rebuilding the operating spine.</span></article>
-            <article><small>05</small><strong>Proof &amp; settlement</strong><span>Receipts, evidence and world outcomes travel forward while authority remains explicit.</span></article>
-          </div>
-          <div class="dio-loop reveal" aria-label="DIO governed consequence loop"><span>Intent</span><i>→</i><span>Compose</span><i>→</i><span>Execute</span><i>→</i><span>Prove</span><i>→</i><span>Settle</span><i>→</i><span>Learn</span></div>
-          <div class="dio-principles reveal">
-            <article><span>◈</span><div><h3>Governed composition</h3><p>Reusable capability can combine, but authority does not hitchhike between roles.</p></div></article>
-            <article><span>⌁</span><div><h3>Typed execution</h3><p>Planning, execution, disclosure and release remain distinct operating decisions.</p></div></article>
-            <article><span>▣</span><div><h3>Evidence by default</h3><p>Outputs are accompanied by receipts, provenance and reviewable proof boundaries.</p></div></article>
-            <article><span>✦</span><div><h3>Products, not prompts</h3><p>The portfolio becomes a governed product factory rather than a pile of disconnected AI demos.</p></div></article>
-          </div>
-        </section>
-
-'''
-          s = s.replace(marker, dio + marker, 1)
-          p.write_text(s, encoding='utf-8')
-          PY
-          curl -fsSL https://raw.githubusercontent.com/Byron2306/DIO-Workflows/main/assets/dio-wordmark.svg -o assets/identity/dio-wordmark.svg
-          cat > dio-section.css <<'CSS'
-          .dio-panel{position:relative;isolation:isolate;margin-top:18px;padding:clamp(24px,3.6vw,42px);overflow:hidden;border:1px solid rgba(214,178,103,.28);border-radius:24px;background:radial-gradient(circle at 9% 14%,rgba(214,178,103,.12),transparent 28%),radial-gradient(circle at 91% 8%,rgba(169,120,255,.12),transparent 30%),linear-gradient(135deg,rgba(7,17,26,.97),rgba(3,8,14,.95));box-shadow:inset 0 1px rgba(255,255,255,.025),0 22px 70px rgba(0,0,0,.28)}.dio-atmosphere{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.34;background:linear-gradient(90deg,transparent 49.8%,rgba(214,178,103,.14) 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,rgba(103,247,212,.08) 50%,transparent 50.2%);background-size:84px 84px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}.dio-intro{display:grid;grid-template-columns:minmax(190px,.68fr) minmax(0,1.7fr) minmax(150px,.48fr);gap:clamp(20px,3vw,42px);align-items:center}.dio-mark-shell{display:grid;place-items:center;gap:7px;min-height:190px;padding:18px;border:1px solid rgba(214,178,103,.22);border-radius:20px;background:radial-gradient(circle,rgba(214,178,103,.08),rgba(2,7,13,.6) 67%)}.dio-wordmark{width:min(100%,340px);filter:drop-shadow(0 0 24px rgba(214,178,103,.16))}.dio-mark-shell span{color:#d7bf89;font-size:.64rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;text-align:center}.dio-copy h2{margin:0;max-width:780px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4.2vw,4.3rem);line-height:.98;letter-spacing:-.045em;color:#f3efe5}.dio-lede{max-width:900px;margin:16px 0 8px;color:#d8e8f1;font-size:clamp(1.02rem,1.5vw,1.24rem);line-height:1.55}.dio-copy>p:not(.eyebrow):not(.dio-lede){max-width:900px;margin:8px 0 0;color:var(--muted)}.dio-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.dio-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 15px;border:1px solid rgba(214,178,103,.26);border-radius:11px;color:#e8d5a8;background:rgba(214,178,103,.055);font-size:.78rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase}.dio-btn:hover{border-color:rgba(214,178,103,.54);transform:translateY(-1px)}.dio-btn-primary{color:#07100d;border-color:transparent;background:linear-gradient(135deg,#d7b86f,#67f7d4)}.dio-proof-signal{display:grid;align-content:center;min-height:190px;padding:20px;border:1px solid rgba(103,247,212,.24);border-radius:20px;background:linear-gradient(150deg,rgba(103,247,212,.075),rgba(169,120,255,.055))}.dio-proof-signal strong{color:var(--mint);font-size:clamp(3rem,6vw,5.3rem);line-height:.9;letter-spacing:-.07em}.dio-proof-signal span{margin-top:12px;color:var(--text);font-weight:800;line-height:1.22}.dio-proof-signal small{margin-top:7px;color:var(--muted)}.dio-architecture{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:30px}.dio-architecture::before{content:"";position:absolute;left:5%;right:5%;top:25px;height:1px;z-index:-1;background:linear-gradient(90deg,rgba(214,178,103,.16),rgba(103,247,212,.48),rgba(169,120,255,.2))}.dio-architecture article{min-height:152px;padding:17px;border:1px solid rgba(138,190,218,.16);border-radius:15px;background:rgba(3,10,16,.84)}.dio-architecture small{display:block;color:#d7b86f;font-weight:900;letter-spacing:.14em}.dio-architecture strong{display:block;margin-top:20px;color:var(--mint);font-size:1rem}.dio-architecture span{display:block;margin-top:6px;color:var(--muted);font-size:.84rem;line-height:1.42}.dio-loop{display:grid;grid-template-columns:repeat(11,auto);justify-content:center;align-items:center;gap:clamp(6px,1.2vw,16px);margin:14px 0;padding:13px 16px;border:1px solid rgba(103,247,212,.14);border-radius:999px;color:var(--mint);background:rgba(103,247,212,.035);font-size:.73rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}.dio-loop i{color:#d7b86f;font-style:normal;opacity:.72}.dio-principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.dio-principles article{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;padding:15px;border:1px solid rgba(138,190,218,.14);border-radius:14px;background:rgba(6,16,25,.7)}.dio-principles article>span{color:#d7b86f;font-size:1.05rem}.dio-principles h3{margin:0;font-size:.92rem}.dio-principles p{margin:4px 0 0;color:var(--muted);font-size:.82rem;line-height:1.42}@media(max-width:1080px){.dio-intro{grid-template-columns:minmax(170px,.65fr) minmax(0,1.6fr)}.dio-proof-signal{grid-column:1/-1;min-height:0;grid-template-columns:auto 1fr;column-gap:16px;align-items:center}.dio-proof-signal strong{grid-row:span 2}.dio-architecture{grid-template-columns:repeat(3,minmax(0,1fr))}.dio-architecture::before{display:none}.dio-principles{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.dio-panel{padding:20px 15px;border-radius:18px}.dio-intro{grid-template-columns:1fr}.dio-mark-shell{min-height:132px}.dio-wordmark{width:min(88%,300px)}.dio-copy h2{font-size:clamp(2rem,11vw,3.2rem)}.dio-actions{display:grid;grid-template-columns:1fr}.dio-btn{width:100%}.dio-proof-signal{grid-template-columns:auto minmax(0,1fr);padding:16px}.dio-architecture{grid-template-columns:1fr}.dio-architecture article{min-height:0}.dio-architecture strong{margin-top:9px}.dio-loop{display:flex;flex-wrap:wrap;border-radius:16px}.dio-principles{grid-template-columns:1fr}}
-          CSS
-
-      - name: GREEN - verify DIO architecture contract
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          h=Path('index.html').read_text(encoding='utf-8'); c=Path('dio-section.css').read_text(encoding='utf-8')
-          assert h.count('id="dio"')==1 and h.count('href="#dio"')==1
-          assert h.index('id="dio"') < h.index('id="flagship"')
-          assert 'assets/identity/dio-wordmark.svg' in h
-          assert all(x in h for x in ('Profiles','Work patterns','Organs &amp; executors','Products &amp; incarnations','Proof &amp; settlement'))
-          assert '68' in h and 'canon-level product incarnations' in h
-          assert '.dio-panel' in c and '.dio-architecture' in c and '@media(max-width:720px)' in c
-          assert Path('assets/identity/dio-wordmark.svg').exists()
-          print('GREEN: DIO architecture section contract verified.')
-          PY
-
-      - name: Commit DIO portfolio spine
+      - name: Commit change
         shell: bash
         run: |
           git config user.name "portfolio-bot"
           git config user.email "portfolio-bot@users.noreply.github.com"
-          git add index.html dio-section.css assets/identity/dio-wordmark.svg
-          git commit -m "Add DIO architecture spine to portfolio"
-          git push
+          if git diff --quiet; then
+            echo "No change needed."
+          else
+            git add index.html
+            git commit -m "Add DIO architecture spine to portfolio"
+            git push
+          fi
