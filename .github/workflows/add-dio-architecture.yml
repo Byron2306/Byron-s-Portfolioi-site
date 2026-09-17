@@ -1,8 +1,9 @@
-name: Add DIO architecture section
+name: Apply DIO disclosure
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - .github/workflows/add-dio-architecture.yml
   workflow_dispatch:
@@ -14,98 +15,14 @@ jobs:
   patch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Confirm regression test is red
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          s=Path('index.html').read_text()
-          required=['id="dio"','Open DIO architecture','assets/identity/dio-sigil.svg']
-          if all(x in s for x in required):
-              raise SystemExit('DIO test unexpectedly already green')
-          print('RED confirmed')
-          PY
-
-      - name: Patch portfolio
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('index.html')
-          s=p.read_text()
-
-          nav_old='          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
-          nav_new='          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#dio"><span>◉</span>DIO</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
-          if '<a href="#dio">' not in s:
-              s=s.replace(nav_old,nav_new,1)
-
-          dio='''        <details class="dio-section section-panel reveal" id="dio">
-          <summary class="dio-summary">
-            <div class="dio-summary-mark"><img src="assets/identity/dio-sigil.svg" alt="DIO sigil" /></div>
-            <div class="dio-summary-copy">
-              <p class="eyebrow">Portfolio operating architecture</p>
-              <h2>Deterministic Intelligence Orchestration</h2>
-              <p>DIO is the governed product factory that turns reusable capabilities into evidence-bound products, controlled execution and auditable outcomes.</p>
-            </div>
-            <div class="dio-summary-status"><strong>68</strong><span>governed portfolio products</span><b>Open DIO architecture ↓</b></div>
-          </summary>
-          <div class="dio-expanded">
-            <div class="dio-manifesto">
-              <div><p class="eyebrow"><span class="status-dot"></span> Architecture before catalogue</p><h3>The spine that turns the portfolio into a system.</h3></div>
-              <p>DIO composes domain profiles, reusable work patterns, governed organs and executors into product incarnations. Typed gates decide what may proceed. Evidence receipts record what happened. External release remains bounded by explicit authority rather than model confidence.</p>
-            </div>
-            <div class="dio-architecture" aria-label="DIO architecture flow">
-              <div><small>01</small><strong>Profiles</strong><span>domain · authority · connector · output</span></div><i>→</i>
-              <div><small>02</small><strong>Work patterns</strong><span>evidence · obligation · proof</span></div><i>→</i>
-              <div><small>03</small><strong>Organs + executors</strong><span>governed reusable capability</span></div><i>→</i>
-              <div><small>04</small><strong>Incarnations</strong><span>products assembled from proven parts</span></div><i>→</i>
-              <div><small>05</small><strong>Receipts + gates</strong><span>ALLOW · REFUSE · NEEDS_YOU</span></div>
-            </div>
-            <div class="dio-pillars">
-              <article><span>⌘</span><strong>Product factory</strong><p>Compile governed capabilities into repeatable products instead of rebuilding every workflow from scratch.</p></article>
-              <article><span>◆</span><strong>Proof-governed execution</strong><p>Execution is constrained by typed authority, current state and explicit evidence boundaries.</p></article>
-              <article><span>◈</span><strong>Evidence as architecture</strong><p>Hashes, receipts, manifests, provenance and verdicts are structural outputs, not decorative logging.</p></article>
-              <article><span>◎</span><strong>Portfolio operating layer</strong><p>HOMS, Evidex, BEAST, ARDA, Sophia, Seraph and the wider product family become interoperable governed surfaces.</p></article>
-            </div>
-            <div class="dio-footer-line"><span><b>68</b> governed portfolio products</span><span><b>Profiles → patterns → capability → product → proof</b></span><a href="https://github.com/Byron2306/DIO-Full-Audit" target="_blank" rel="noreferrer">Open DIO repository ↗</a></div>
-          </div>
-        </details>
-
-'''
-          marker='        <section class="section-panel" id="flagship" aria-labelledby="flagship-title">'
-          if 'id="dio"' not in s:
-              if marker not in s: raise SystemExit('flagship marker missing')
-              s=s.replace(marker,dio+marker,1)
-
-          if 'dio.css' not in s:
-              s=s.replace('<link rel="stylesheet" href="styles.css" />','<link rel="stylesheet" href="styles.css" />\n  <link rel="stylesheet" href="dio.css?v=20260917" />',1)
-          p.write_text(s)
-          PY
-
-      - name: Verify regression test is green
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          s=Path('index.html').read_text()
-          checks=[
-            '<a href="#dio"><span>◉</span>DIO</a>',
-            '<details class="dio-section section-panel reveal" id="dio">',
-            'assets/identity/dio-sigil.svg',
-            'Open DIO architecture',
-            'Profiles','Work patterns','Organs + executors','Receipts + gates',
-            '68','governed portfolio products','dio.css?v=20260917'
-          ]
-          missing=[x for x in checks if x not in s]
-          if missing: raise SystemExit('GREEN failed: '+repr(missing))
-          print('GREEN confirmed')
-          PY
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Apply and verify
+        run: python3 scripts/patch_dio_disclosure.py
       - name: Commit
         run: |
-          git config user.name "portfolio-site-bot"
-          git config user.email "portfolio-site-bot@users.noreply.github.com"
+          git config user.name portfolio-site-bot
+          git config user.email portfolio-site-bot@users.noreply.github.com
           git add index.html
-          git commit -m "Add collapsible DIO architecture section"
+          git commit -m "Collapse DIO architecture section"
           git push
