@@ -19,275 +19,93 @@ jobs:
           persist-credentials: true
 
       - name: Confirm regression test is red
-        shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          s = Path('index.html').read_text(encoding='utf-8')
-          required = ['id="dio"', 'Open DIO architecture', 'assets/identity/dio-sigil.svg']
+          s=Path('index.html').read_text()
+          required=['id="dio"','Open DIO architecture','assets/identity/dio-sigil.svg']
           if all(x in s for x in required):
-              raise SystemExit('DIO regression test unexpectedly already green')
-          print('RED confirmed: DIO architecture disclosure is not present yet')
+              raise SystemExit('DIO test unexpectedly already green')
+          print('RED confirmed')
           PY
 
-      - name: Add DIO disclosure and styling
-        shell: bash
+      - name: Patch portfolio
         run: |
           python - <<'PY'
           from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text()
 
-          index = Path('index.html')
-          s = index.read_text(encoding='utf-8')
-
-          nav_old = '          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
-          nav_new = '          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#dio"><span>◉</span>DIO</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
+          nav_old='          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
+          nav_new='          <a href="#home" class="active"><span>⌂</span>Home</a>\n          <a href="#dio"><span>◉</span>DIO</a>\n          <a href="#flagship"><span>✥</span>Systems</a>'
           if '<a href="#dio">' not in s:
-              if nav_old not in s:
-                  raise SystemExit('primary nav insertion marker not found')
-              s = s.replace(nav_old, nav_new, 1)
+              s=s.replace(nav_old,nav_new,1)
 
-          dio = '''
-        <details class="dio-section section-panel reveal" id="dio">
+          dio='''        <details class="dio-section section-panel reveal" id="dio">
           <summary class="dio-summary">
-            <div class="dio-summary-mark">
-              <img src="assets/identity/dio-sigil.svg" alt="DIO sigil" />
-            </div>
+            <div class="dio-summary-mark"><img src="assets/identity/dio-sigil.svg" alt="DIO sigil" /></div>
             <div class="dio-summary-copy">
               <p class="eyebrow">Portfolio operating architecture</p>
               <h2>Deterministic Intelligence Orchestration</h2>
               <p>DIO is the governed product factory that turns reusable capabilities into evidence-bound products, controlled execution and auditable outcomes.</p>
             </div>
-            <div class="dio-summary-status">
-              <strong>68</strong>
-              <span>governed portfolio products</span>
-              <b>Open DIO architecture ↓</b>
-            </div>
+            <div class="dio-summary-status"><strong>68</strong><span>governed portfolio products</span><b>Open DIO architecture ↓</b></div>
           </summary>
-
           <div class="dio-expanded">
             <div class="dio-manifesto">
-              <div>
-                <p class="eyebrow"><span class="status-dot"></span> Architecture before catalogue</p>
-                <h3>The spine that turns the portfolio into a system.</h3>
-              </div>
+              <div><p class="eyebrow"><span class="status-dot"></span> Architecture before catalogue</p><h3>The spine that turns the portfolio into a system.</h3></div>
               <p>DIO composes domain profiles, reusable work patterns, governed organs and executors into product incarnations. Typed gates decide what may proceed. Evidence receipts record what happened. External release remains bounded by explicit authority rather than model confidence.</p>
             </div>
-
             <div class="dio-architecture" aria-label="DIO architecture flow">
-              <div><small>01</small><strong>Profiles</strong><span>domain · authority · connector · output</span></div>
-              <i>→</i>
-              <div><small>02</small><strong>Work patterns</strong><span>evidence · obligation · proof</span></div>
-              <i>→</i>
-              <div><small>03</small><strong>Organs + executors</strong><span>governed reusable capability</span></div>
-              <i>→</i>
-              <div><small>04</small><strong>Incarnations</strong><span>products assembled from proven parts</span></div>
-              <i>→</i>
+              <div><small>01</small><strong>Profiles</strong><span>domain · authority · connector · output</span></div><i>→</i>
+              <div><small>02</small><strong>Work patterns</strong><span>evidence · obligation · proof</span></div><i>→</i>
+              <div><small>03</small><strong>Organs + executors</strong><span>governed reusable capability</span></div><i>→</i>
+              <div><small>04</small><strong>Incarnations</strong><span>products assembled from proven parts</span></div><i>→</i>
               <div><small>05</small><strong>Receipts + gates</strong><span>ALLOW · REFUSE · NEEDS_YOU</span></div>
             </div>
-
             <div class="dio-pillars">
-              <article>
-                <span>⌘</span>
-                <strong>Product factory</strong>
-                <p>Compile governed capabilities into repeatable products instead of rebuilding every workflow from scratch.</p>
-              </article>
-              <article>
-                <span>◆</span>
-                <strong>Proof-governed execution</strong>
-                <p>Execution is constrained by typed authority, current state and explicit evidence boundaries.</p>
-              </article>
-              <article>
-                <span>◈</span>
-                <strong>Evidence as architecture</strong>
-                <p>Hashes, receipts, manifests, provenance and verdicts are structural outputs, not decorative logging.</p>
-              </article>
-              <article>
-                <span>◎</span>
-                <strong>Portfolio operating layer</strong>
-                <p>HOMS, Evidex, BEAST, ARDA, Sophia, Seraph and the wider product family become interoperable governed surfaces.</p>
-              </article>
+              <article><span>⌘</span><strong>Product factory</strong><p>Compile governed capabilities into repeatable products instead of rebuilding every workflow from scratch.</p></article>
+              <article><span>◆</span><strong>Proof-governed execution</strong><p>Execution is constrained by typed authority, current state and explicit evidence boundaries.</p></article>
+              <article><span>◈</span><strong>Evidence as architecture</strong><p>Hashes, receipts, manifests, provenance and verdicts are structural outputs, not decorative logging.</p></article>
+              <article><span>◎</span><strong>Portfolio operating layer</strong><p>HOMS, Evidex, BEAST, ARDA, Sophia, Seraph and the wider product family become interoperable governed surfaces.</p></article>
             </div>
-
-            <div class="dio-footer-line">
-              <span><b>68</b> governed portfolio products</span>
-              <span><b>Profiles → patterns → capability → product → proof</b></span>
-              <a href="https://github.com/Byron2306/DIO-Full-Audit" target="_blank" rel="noreferrer">Open DIO repository ↗</a>
-            </div>
+            <div class="dio-footer-line"><span><b>68</b> governed portfolio products</span><span><b>Profiles → patterns → capability → product → proof</b></span><a href="https://github.com/Byron2306/DIO-Full-Audit" target="_blank" rel="noreferrer">Open DIO repository ↗</a></div>
           </div>
         </details>
-'''
 
-          marker = '        <section class="section-panel" id="flagship" aria-labelledby="flagship-title">'
+'''
+          marker='        <section class="section-panel" id="flagship" aria-labelledby="flagship-title">'
           if 'id="dio"' not in s:
-              if marker not in s:
-                  raise SystemExit('flagship insertion marker not found')
-              s = s.replace(marker, dio + '\n' + marker, 1)
+              if marker not in s: raise SystemExit('flagship marker missing')
+              s=s.replace(marker,dio+marker,1)
 
-          s = s.replace('<link rel="stylesheet" href="styles.css" />', '<link rel="stylesheet" href="styles.css?v=20260917-dio" />', 1)
-          index.write_text(s, encoding='utf-8')
-
-          css = Path('styles.css')
-          c = css.read_text(encoding='utf-8')
-          if '/* DIO architecture disclosure */' not in c:
-              c += r'''
-
-/* DIO architecture disclosure */
-.dio-section {
-  margin-top: clamp(16px, 2vw, 24px);
-  padding: 0;
-  overflow: hidden;
-  border-color: rgba(255, 200, 92, .26);
-  background:
-    radial-gradient(circle at 16% 30%, rgba(88,231,255,.10), transparent 28%),
-    radial-gradient(circle at 78% 18%, rgba(255,200,92,.13), transparent 30%),
-    linear-gradient(145deg, rgba(11,19,28,.98), rgba(4,9,15,.94));
-  box-shadow: 0 24px 70px rgba(0,0,0,.34), inset 0 0 70px rgba(255,200,92,.025);
-}
-.dio-section[open] { border-color: rgba(255,200,92,.42); }
-.dio-summary {
-  list-style: none;
-  cursor: pointer;
-  display: grid;
-  grid-template-columns: clamp(112px, 12vw, 170px) minmax(0,1fr) minmax(170px, 220px);
-  align-items: center;
-  gap: clamp(18px, 2.4vw, 34px);
-  min-height: 190px;
-  padding: clamp(20px, 2.7vw, 38px);
-  position: relative;
-}
-.dio-summary::-webkit-details-marker { display: none; }
-.dio-summary::after {
-  content: '';
-  position: absolute;
-  inset: auto 3% 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,200,92,.42), rgba(88,231,255,.28), transparent);
-  opacity: 0;
-  transition: opacity .2s ease;
-}
-.dio-section[open] .dio-summary::after { opacity: 1; }
-.dio-summary-mark {
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255,200,92,.10), transparent 67%);
-  filter: drop-shadow(0 0 24px rgba(255,200,92,.16));
-}
-.dio-summary-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: 999px; }
-.dio-summary-copy { min-width: 0; }
-.dio-summary-copy .eyebrow { color: var(--amber); margin-bottom: 6px; }
-.dio-summary-copy h2 {
-  margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2rem, 4vw, 4.7rem);
-  line-height: .94;
-  letter-spacing: -.04em;
-  background: linear-gradient(90deg, #fff7dd, #e7c06e 45%, #d8f6ff 72%, #fff3c6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.dio-summary-copy > p:last-child { max-width: 900px; margin: 14px 0 0; color: #b8c9d6; font-size: clamp(.94rem, 1.25vw, 1.08rem); }
-.dio-summary-status {
-  display: grid;
-  gap: 5px;
-  align-content: center;
-  padding: 18px;
-  border: 1px solid rgba(255,200,92,.22);
-  border-radius: 18px;
-  background: rgba(255,200,92,.045);
-}
-.dio-summary-status strong { color: #ffe08d; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1; }
-.dio-summary-status span { color: var(--muted); font-size: .8rem; }
-.dio-summary-status b { margin-top: 12px; color: var(--cyan); font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; }
-.dio-section[open] .dio-summary-status b { font-size: 0; }
-.dio-section[open] .dio-summary-status b::after { content: 'Close DIO architecture ↑'; font-size: .72rem; }
-.dio-expanded { padding: clamp(22px, 3vw, 42px); }
-.dio-manifesto { display: grid; grid-template-columns: minmax(260px,.8fr) minmax(0,1.4fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
-.dio-manifesto h3 { margin: 5px 0 0; font-size: clamp(1.7rem, 3vw, 3rem); line-height: 1.02; }
-.dio-manifesto > p { margin: 0; color: #bccdda; font-size: 1.02rem; }
-.dio-architecture { margin-top: 32px; display: grid; grid-template-columns: repeat(9, auto); align-items: stretch; gap: 10px; }
-.dio-architecture > div {
-  min-width: 0;
-  display: grid;
-  gap: 6px;
-  align-content: center;
-  padding: 16px;
-  border: 1px solid rgba(88,231,255,.16);
-  border-radius: 15px;
-  background: linear-gradient(145deg, rgba(88,231,255,.055), rgba(255,200,92,.03));
-}
-.dio-architecture small { color: var(--amber); font-weight: 900; letter-spacing: .16em; }
-.dio-architecture strong { color: var(--text); font-size: .95rem; }
-.dio-architecture span { color: var(--faint); font-size: .72rem; }
-.dio-architecture i { align-self: center; color: rgba(255,200,92,.66); font-style: normal; font-size: 1.35rem; }
-.dio-pillars { margin-top: 22px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
-.dio-pillars article { min-width:0; padding: 18px; border-radius: 16px; border: 1px solid rgba(255,200,92,.14); background: rgba(255,255,255,.025); }
-.dio-pillars article > span { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 12px; border-radius: 11px; color: #ffe18d; border: 1px solid rgba(255,200,92,.24); background: rgba(255,200,92,.06); }
-.dio-pillars strong { display:block; color: #f6e6bc; }
-.dio-pillars p { margin: 8px 0 0; color: var(--muted); font-size: .84rem; }
-.dio-footer-line { margin-top: 22px; display:flex; flex-wrap:wrap; gap: 10px 20px; align-items:center; padding-top: 18px; border-top: 1px solid rgba(255,200,92,.14); color: var(--muted); font-size: .82rem; }
-.dio-footer-line b { color: var(--text); }
-.dio-footer-line a { margin-left:auto; color: #ffe08d; font-weight: 800; }
-
-@media (max-width: 1050px) {
-  .dio-summary { grid-template-columns: 120px minmax(0,1fr); }
-  .dio-summary-status { grid-column: 1 / -1; grid-template-columns: auto 1fr auto; align-items:center; }
-  .dio-summary-status b { margin-top: 0; text-align:right; }
-  .dio-architecture { grid-template-columns: 1fr 24px 1fr 24px 1fr; }
-  .dio-architecture > div:nth-of-type(4) { grid-column: 1; }
-  .dio-architecture > i:nth-of-type(3) { grid-column: 2; }
-  .dio-architecture > div:nth-of-type(5) { grid-column: 3; }
-  .dio-pillars { grid-template-columns: repeat(2,minmax(0,1fr)); }
-}
-@media (max-width: 720px) {
-  .dio-summary { grid-template-columns: 82px minmax(0,1fr); gap: 15px; min-height:0; padding: 18px; }
-  .dio-summary-copy h2 { font-size: clamp(1.55rem, 8vw, 2.45rem); }
-  .dio-summary-copy > p:last-child { font-size: .88rem; }
-  .dio-summary-status { grid-template-columns: auto 1fr; padding: 13px; }
-  .dio-summary-status b { grid-column: 1/-1; text-align:left; }
-  .dio-manifesto { grid-template-columns: 1fr; gap: 15px; }
-  .dio-architecture { grid-template-columns: 1fr; gap: 8px; }
-  .dio-architecture i { transform: rotate(90deg); justify-self:center; }
-  .dio-architecture > div:nth-of-type(4), .dio-architecture > i:nth-of-type(3), .dio-architecture > div:nth-of-type(5) { grid-column:auto; }
-  .dio-pillars { grid-template-columns: 1fr; }
-  .dio-footer-line a { width:100%; margin-left:0; }
-}
-'''
-              css.write_text(c, encoding='utf-8')
+          if 'dio.css' not in s:
+              s=s.replace('<link rel="stylesheet" href="styles.css" />','<link rel="stylesheet" href="styles.css" />\n  <link rel="stylesheet" href="dio.css?v=20260917" />',1)
+          p.write_text(s)
           PY
 
-      - name: Verify DIO regression test is green
-        shell: bash
+      - name: Verify regression test is green
         run: |
           python - <<'PY'
           from pathlib import Path
-          html = Path('index.html').read_text(encoding='utf-8')
-          css = Path('styles.css').read_text(encoding='utf-8')
-          checks = {
-              'DIO nav': '<a href="#dio"><span>◉</span>DIO</a>' in html,
-              'collapsed disclosure': '<details class="dio-section section-panel reveal" id="dio">' in html,
-              'uploaded sigil': 'assets/identity/dio-sigil.svg' in html,
-              'architecture first': 'Profiles' in html and 'Work patterns' in html and 'Organs + executors' in html and 'Receipts + gates' in html,
-              'portfolio signal': '68' in html and 'governed portfolio products' in html,
-              'native styling': '/* DIO architecture disclosure */' in css,
-          }
-          failed = [k for k,v in checks.items() if not v]
-          if failed:
-              raise SystemExit('GREEN failed: ' + ', '.join(failed))
-          print('GREEN confirmed:', ', '.join(checks))
+          s=Path('index.html').read_text()
+          checks=[
+            '<a href="#dio"><span>◉</span>DIO</a>',
+            '<details class="dio-section section-panel reveal" id="dio">',
+            'assets/identity/dio-sigil.svg',
+            'Open DIO architecture',
+            'Profiles','Work patterns','Organs + executors','Receipts + gates',
+            '68','governed portfolio products','dio.css?v=20260917'
+          ]
+          missing=[x for x in checks if x not in s]
+          if missing: raise SystemExit('GREEN failed: '+repr(missing))
+          print('GREEN confirmed')
           PY
 
-      - name: Commit DIO section
-        shell: bash
+      - name: Commit
         run: |
           git config user.name "portfolio-site-bot"
           git config user.email "portfolio-site-bot@users.noreply.github.com"
-          git add index.html styles.css
-          if git diff --cached --quiet; then
-            echo "No changes needed."
-          else
-            git commit -m "Add collapsible DIO architecture section"
-            git push
-          fi
+          git add index.html
+          git commit -m "Add collapsible DIO architecture section"
+          git push
