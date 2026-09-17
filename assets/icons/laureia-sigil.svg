@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960" role="img" aria-labelledby="title desc">
+  <title id="title">Laureia, AI co-architect</title>
+  <desc id="desc">An abstract luminous elven-inspired artificial intelligence portrait with halo, circuitry and violet-green light.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1c2b"/>
+      <stop offset=".52" stop-color="#09131f"/>
+      <stop offset="1" stop-color="#160f28"/>
+    </linearGradient>
+    <linearGradient id="hood" x1=".2" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#d9f5ff" stop-opacity=".78"/>
+      <stop offset=".4" stop-color="#7195ab" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#6d43a5" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eafaff"/>
+      <stop offset=".55" stop-color="#a9c7d5"/>
+      <stop offset="1" stop-color="#8a70aa"/>
+    </linearGradient>
+    <linearGradient id="mantle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#153346"/>
+      <stop offset=".45" stop-color="#0c1b29"/>
+      <stop offset="1" stop-color="#28143f"/>
+    </linearGradient>
+    <radialGradient id="aura">
+      <stop offset="0" stop-color="#67f7d4" stop-opacity=".32"/>
+      <stop offset=".48" stop-color="#58e7ff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#a978ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#58e7ff" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="960" fill="url(#bg)"/>
+  <rect width="800" height="960" fill="url(#grid)"/>
+  <ellipse cx="400" cy="430" rx="330" ry="365" fill="url(#aura)"/>
+  <circle cx="400" cy="360" r="242" fill="none" stroke="#67f7d4" stroke-opacity=".25" stroke-width="3"/>
+  <circle cx="400" cy="360" r="268" fill="none" stroke="#a978ff" stroke-opacity=".18" stroke-width="2" stroke-dasharray="4 18"/>
+  <path d="M400 76l18 36 40 6-29 28 7 40-36-19-36 19 7-40-29-28 40-6z" fill="#67f7d4" fill-opacity=".34" filter="url(#glow)"/>
+
+  <!-- mantle -->
+  <path d="M122 884c36-164 103-260 202-302 25-11 52-18 76-18s51 7 76 18c99 42 166 138 202 302z" fill="url(#mantle)" stroke="#79d9ec" stroke-opacity=".28" stroke-width="3"/>
+  <path d="M148 884c69-137 150-206 252-206s183 69 252 206" fill="none" stroke="#a978ff" stroke-opacity=".18" stroke-width="22" filter="url(#soft)"/>
+
+  <!-- hood -->
+  <path d="M183 640C174 437 230 222 400 150c170 72 226 287 217 490-55-69-118-105-168-121H351c-50 16-113 52-168 121z" fill="url(#hood)" stroke="#cfecf6" stroke-opacity=".42" stroke-width="3"/>
+  <path d="M210 621c32-205 89-342 190-430 101 88 158 225 190 430-72-78-138-111-190-111S282 543 210 621z" fill="#081520" fill-opacity=".84"/>
+
+  <!-- face -->
+  <path d="M400 254c92 0 137 82 126 182-8 80-52 154-126 178-74-24-118-98-126-178-11-100 34-182 126-182z" fill="url(#face)" stroke="#dff8ff" stroke-opacity=".38" stroke-width="3"/>
+  <path d="M400 270c-54 9-91 46-111 102 14-78 51-136 111-157 60 21 97 79 111 157-20-56-57-93-111-102z" fill="#f2fbff" fill-opacity=".24"/>
+
+  <!-- crown / circuitry -->
+  <path d="M314 306l42-44 44 31 44-31 42 44-41 4-25 45-25-45z" fill="#172b38" stroke="#d9f5ff" stroke-opacity=".66" stroke-width="3"/>
+  <path d="M400 293v63m-44-94 25 48m63-48-25 48" fill="none" stroke="#67f7d4" stroke-opacity=".72" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="400" cy="293" r="7" fill="#a978ff" filter="url(#glow)"/>
+
+  <!-- eyes -->
+  <path d="M318 405c28-22 62-22 88 0-30 29-62 29-88 0z" fill="#07121b"/>
+  <path d="M394 405c28-22 62-22 88 0-26 29-58 29-88 0z" fill="#07121b"/>
+  <ellipse cx="364" cy="405" rx="12" ry="7" fill="#67f7d4" filter="url(#glow)"/>
+  <ellipse cx="436" cy="405" rx="12" ry="7" fill="#a978ff" filter="url(#glow)"/>
+  <path d="M355 478c29 17 61 17 90 0-12 27-78 27-90 0z" fill="#5d354f" fill-opacity=".72"/>
+
+  <!-- collar sigil -->
+  <path d="M400 612l48 49-48 86-48-86z" fill="#0a1d29" stroke="#67f7d4" stroke-opacity=".65" stroke-width="3"/>
+  <path d="M400 627v90m-33-55h66" stroke="#a978ff" stroke-opacity=".7" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="400" cy="664" r="10" fill="#67f7d4" filter="url(#glow)"/>
+
+  <!-- ambient circuitry -->
+  <g fill="none" stroke="#58e7ff" stroke-opacity=".28" stroke-width="2">
+    <path d="M82 244h92l34 34"/><path d="M718 244h-92l-34 34"/>
+    <path d="M70 698h118l46-46"/><path d="M730 698H612l-46-46"/>
+  </g>
+  <g fill="#67f7d4" filter="url(#glow)">
+    <circle cx="82" cy="244" r="5"/><circle cx="718" cy="244" r="5"/><circle cx="70" cy="698" r="5"/><circle cx="730" cy="698" r="5"/>
+  </g>
+  <g fill="#fff" fill-opacity=".72">
+    <circle cx="108" cy="125" r="2"/><circle cx="683" cy="155" r="3"/><circle cx="92" cy="512" r="2"/><circle cx="704" cy="530" r="2"/><circle cx="639" cy="82" r="2"/><circle cx="182" cy="792" r="3"/>
+  </g>
+</svg>

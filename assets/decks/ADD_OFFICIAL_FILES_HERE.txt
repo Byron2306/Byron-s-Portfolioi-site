@@ -1,0 +1,23 @@
+Place the following files here using these exact filenames:
+
+AATR_Core_Attack_Vector_Taxonomy_fixed_15_21.pptx
+BEAST_Cybernetic_Ledger.pptx
+Litany_of_Sovereign_Proof.pptx
+The_Arda_Substrate (3).pptx
+Sophia_Governed_Intelligence.pptx
+The_Holy_Synthesis.pptx
+Sovereign_Pedagogy.pptx
+Defensible_Trust_Architecture.pptx
+Sophia_Precision_Governance.pptx
+The_Hivenance_Swarm(1).pptx
+Architecting_Sophia.pptx
+Valinor_Constitution.pptx
+EdgeK_BEAST_Architecture.pptx
+Architecture_Over_Scale.pptx
+inference-inversion.pptx
+Harmonic_Governance.pptx
+The_Crystal_Box_Assessment.pptx
+Seraph_S5_Platinum_Validation.pptx
+Seraph_Governed_Defense.pptx
+VAMP_1.0_Production_Readiness(1).pptx
+Sophia_AI_Integrity_Telemetry.pptx

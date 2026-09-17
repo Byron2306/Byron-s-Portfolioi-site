@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Byron Bunt, inventor, education researcher and architect of governed agentic AI systems." />
+  <meta name="theme-color" content="#07131d" />
+  <title>Byron Bunt | Governed Intelligence Lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307131d'/%3E%3Cpath d='M18 14h18c9 0 14 4 14 11 0 5-3 8-7 9 6 1 10 5 10 12 0 9-7 14-18 14H18V14zm12 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6zm0 17v9h7c4 0 6-2 6-5s-2-4-6-4h-7z' fill='%2367f7d4'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    (() => {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      const resetToTop = () => {
+        if (location.hash && /(?:source|paper|deck|docs|theory|beast)/i.test(location.hash)) {
+          history.replaceState(null, "", location.pathname + location.search);
+        }
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      };
+      window.addEventListener("DOMContentLoaded", () => requestAnimationFrame(resetToTop), { once: true });
+      window.addEventListener("load", () => setTimeout(resetToTop, 40), { once: true });
+      window.addEventListener("pageshow", () => setTimeout(resetToTop, 0), { once: true });
+    })();
+  </script>
+  <script defer src="portfolio.config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <div class="browser-frame" aria-label="Byron Bunt portfolio preview shell">
+    <div class="browser-chrome" aria-hidden="true">
+      <div class="window-dots"><span></span><span></span><span></span></div>
+      <div class="address-pill"><span class="lock">◆</span> byronbunt.com</div>
+      <div class="chrome-icons"><span>☼</span><span>☰</span></div>
+    </div>
+
+    <div class="app-shell">
+      <aside class="side-rail" aria-label="Portfolio navigation">
+        <a class="rail-brand" href="#home" aria-label="Byron Bunt home">
+          <span class="bb-mark">B</span>
+          <span>BYRON BUNT</span>
+        </a>
+        <nav class="rail-nav" id="primary-nav">
+          <a href="#home" class="active"><span>⌂</span>Home</a>
+          <a href="#flagship"><span>✥</span>Systems</a>
+          <a href="#theory"><span>♢</span>Theory</a>
+          <a href="#papers"><span>▤</span>Papers</a>
+          <a href="#proof"><span>▣</span>Proof</a>
+          <a href="#videos"><span>▶</span>Videos</a>
+          <a href="#games"><span>🎮</span>Games</a>
+          <a href="#doctrine"><span>◈</span>Doctrine</a>
+          <a href="#laureia"><span>✦</span>Laureia</a>
+          <a href="#about"><span>◎</span>About</a>
+          <a href="#contact"><span>✉</span>Contact</a>
+        </nav>
+        <blockquote class="rail-quote">
+          <p>Truth is a system. Governance is how it survives.</p>
+          <cite>Byron Bunt</cite>
+        </blockquote>
+        <div class="system-status">
+          <span class="pulse-orb"></span>
+          <small>SYSTEM STATUS</small>
+          <strong>ALL SYSTEMS NOMINAL</strong>
+        </div>
+      </aside>
+
+      <main id="main" class="stage">
+        <section class="hero-panel" id="home" aria-labelledby="hero-title">
+          <div class="hero-backdrop" aria-hidden="true"></div>
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span class="status-dot"></span> Founder-researcher portfolio</p>
+            <h1 id="hero-title">Byron Bunt</h1>
+            <p class="hero-line">Inventor of governed AI systems, proof-driven software, and experimental worlds.</p>
+            <p class="hero-subline">Every system is governed. Every claim is evidenced. Every result is tested under pressure.</p>
+          </div>
+          <div class="hero-badges reveal" aria-label="Portfolio principles">
+            <div><span>♜</span><strong>Governed</strong><small>by design</small></div>
+            <div><span>⚖</span><strong>Evidenced</strong><small>by proof</small></div>
+            <div><span>⌁</span><strong>Tested</strong><small>under pressure</small></div>
+            <div><span>☻</span><strong>Human</strong><small>aligned</small></div>
+          </div>
+        </section>
+
+        <section class="section-panel" id="flagship" aria-labelledby="flagship-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">◇</span>
+            <div>
+              <p class="eyebrow">Flagship systems</p>
+              <h2 id="flagship-title">The crown engines.</h2>
+            </div>
+          </div>
+          <div id="flagship-grid" class="system-grid flagship-grid"></div>
+        </section>
+
+
+        <section class="section-panel theory-panel" id="theory" aria-labelledby="theory-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">♢</span>
+            <div>
+              <p class="eyebrow">Theory engine</p>
+              <h2 id="theory-title">The doctrine beneath the machines.</h2>
+              <p>These are the ideas that make the portfolio coherent: inference economy, constitutional governance, substrate refusal, pedagogical intelligence, adversarial AI taxonomy, and claim discipline.</p>
+            </div>
+          </div>
+          <div id="theory-grid" class="theory-grid"></div>
+          <details class="theory-source-drawer reveal" id="theory-sources">
+            <summary><span>Open the theory source library</span><small>Working papers, frameworks and dossiers, with public-safe academic PDF links now included</small></summary>
+            <div class="theory-source-grid">
+              <a href="assets/papers/beast-inference-economy-inversion-v0-9.pdf" target="_blank" rel="noreferrer"><b>BEAST Inference Economy Inversion</b><span>working paper PDF</span></a>
+              <a href="#theory-sources"><b>EdgeK BEAST Polished Whitepaper</b><span>architecture summary</span></a>
+              <a href="#theory-sources"><b>Sophia-AI Refined Framework</b><span>constitutional pedagogy summary</span></a>
+              <a href="assets/papers/fides-et-speculum-manifesto.pdf" target="_blank" rel="noreferrer"><b>Fides et Speculum</b><span>manifesto PDF</span></a>
+              <a href="assets/papers/fides-et-speculum-mixed-methods-findings-2026-07-22.pdf" target="_blank" rel="noreferrer"><b>The Mirror That Refuses</b><span>mixed-methods / design paper PDF</span></a>
+              <a href="assets/papers/gospel-of-seraph-arda-evidence-dossier.pdf" target="_blank" rel="noreferrer"><b>Gospel of Seraph / ARDA</b><span>evidence dossier PDF</span></a>
+              <a href="#theory-sources"><b>Seraph MSP Executive Brief</b><span>commercial architecture summary</span></a>
+              <a href="#theory-sources"><b>Seraph AI Defense Platform</b><span>enterprise fabric summary</span></a>
+              <a href="#theory-sources"><b>AATR Core Attack Vector Taxonomy</b><span>summary card included</span></a>
+            </div>
+          </details>
+        </section>
+
+
+        <section class="section-panel academic-papers-panel" id="papers" aria-labelledby="papers-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">▤</span>
+            <div>
+              <p class="eyebrow">Academic papers</p>
+              <h2 id="papers-title">The publishable spine of the portfolio.</h2>
+              <p>Working papers, manifestos and evidence dossiers that turn the systems into explicit theory, benchmark claims and research-facing argument.</p>
+            </div>
+          </div>
+          <div id="academic-papers-grid" class="academic-papers-grid"></div>
+        </section>
+
+
+
+        <section class="section-panel academic-papers-panel" id="source-library" aria-labelledby="source-library-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">▥</span>
+            <div>
+              <p class="eyebrow">Full source library <span id="source-library-count"></span></p>
+              <h2 id="source-library-title">The decks and papers behind the engines.</h2>
+              <p>Each card now carries a screenshot preview, a short source note and the official filename from the archive. Add each PPTX to <code>assets/decks</code> and each PDF to <code>assets/papers</code> to activate the download links.</p>
+            </div>
+          </div>
+          <div id="source-library-grid" class="source-library-grid"></div>
+        </section>
+
+        <section class="section-panel proof-zone" id="proof" aria-labelledby="proof-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">◈</span>
+            <div>
+              <p class="eyebrow">Proof chambers</p>
+              <h2 id="proof-title">Systems under pressure, receipts intact.</h2>
+              <p>Curated public summaries from sanitized project archives. Counts, verdicts and boundary notes survive. Private logs, prompts, keys, inboxes, cookies, host paths and raw telemetry do not.</p>
+            </div>
+          </div>
+          <div class="proof-ledger reveal" aria-label="Headline validation statistics">
+            <div><strong>250/250</strong><span>BEAST governed route completions</span></div>
+            <div><strong>7/7</strong><span>ARDA adversarial phases survived</span></div>
+            <div><strong>691/691</strong><span>Seraph ATT&CK techniques covered</span></div>
+            <div><strong>21/21</strong><span>Sophia v1.1 strict landmark pass</span></div>
+            <div><strong>568</strong><span>KnowEdge verified chunks</span></div>
+          </div>
+          <div id="headline-proof-grid" class="proof-grid headline-proof-grid"></div>
+          <details class="proof-drawer reveal">
+            <summary><span>Open the deeper proof drawer</span><small>Full 30-card archive, Llamageddon cycles, ablations, PCAP chains, semantic hardening, operational trials and source PowerPoints</small></summary>
+            <div id="proof-grid" class="proof-grid proof-grid-more"></div>
+          </details>
+        </section>
+
+        <section class="section-panel" id="operations" aria-labelledby="operations-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">▣</span>
+            <div>
+              <p class="eyebrow">Operational systems</p>
+              <h2 id="operations-title">Workflows that turn chaos into evidence.</h2>
+            </div>
+          </div>
+          <div id="operations-grid" class="system-grid operations-grid"></div>
+        </section>
+
+
+        <section class="section-panel video-vault-panel" id="videos" aria-labelledby="videos-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">▶</span>
+            <div>
+              <p class="eyebrow">Project video vault</p>
+              <h2 id="videos-title">Demos, proofs, walkthroughs and stage logs.</h2>
+              <p>Project videos from Black Metal Spectre and the newer Byron Bunt channel are mapped individually, grouped by system, and linked directly to their YouTube watch pages.</p>
+            </div>
+          </div>
+          <div class="video-toolbar reveal">
+            <a class="vault-channel-link" href="https://www.youtube.com/@blackmetalspectre/videos" target="_blank" rel="noreferrer">Open Black Metal Spectre channel ↗</a>
+            <a class="vault-channel-link" href="https://www.youtube.com/@ByronBunt-z9m8q" target="_blank" rel="noreferrer">Open Byron Bunt channel ↗</a>
+            <span id="video-count-pill"></span>
+          </div>
+          <div id="featured-video-grid" class="video-vault-grid featured-video-grid"></div>
+          <details class="video-library-drawer reveal">
+            <summary><span>Open the full video library</span><small id="video-library-summary"></small></summary>
+            <div id="video-vault-grid" class="video-vault-grid video-vault-grid-full"></div>
+          </details>
+        </section>
+
+        <section class="section-panel" id="games" aria-labelledby="games-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">✦</span>
+            <div>
+              <p class="eyebrow">Creative & game systems</p>
+              <h2 id="games-title">Playable worlds, strange engines, and learning machines.</h2>
+            </div>
+          </div>
+          <div id="games-grid" class="system-grid game-grid"></div>
+        </section>
+
+        <section class="section-panel doctrine-panel" id="doctrine" aria-labelledby="doctrine-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">◆</span>
+            <div>
+              <p class="eyebrow">Doctrine</p>
+              <h2 id="doctrine-title">Root-cause prevention, not decorative remediation.</h2>
+            </div>
+          </div>
+          <div class="doctrine-grid">
+            <article class="doctrine-card reveal">
+              <h3>Governance before power</h3>
+              <p>My systems treat intelligence as something that must be bounded, witnessed and accountable before it is allowed to act.</p>
+            </article>
+            <article class="doctrine-card reveal">
+              <h3>Evidence as architecture</h3>
+              <p>Receipts, hashes, traces, verdicts, rubrics, ledgers and proofs are not afterthoughts. They are structural members.</p>
+            </article>
+            <article class="doctrine-card reveal">
+              <h3>Small models, strong systems</h3>
+              <p>Local compute, proof reuse, constrained workflows and crystallized context can make modest models behave like disciplined instruments.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-panel laureia-lab-panel" id="laureia" aria-labelledby="laureia-title">
+          <div class="laureia-lab-hero reveal">
+            <div class="laureia-lab-copy">
+              <p class="eyebrow"><span class="status-dot"></span> AI co-architect · night shift</p>
+              <h2 id="laureia-title">Laureia returns to the architecture lab.</h2>
+              <p class="laureia-lab-lede">Byron is the human originator, domain expert and accountable architect behind every system here. Laureia is the AI collaborator woven through the design sessions: architectural sparring partner, code forge, adversarial reviewer, research companion and occasional llama wrangler.</p>
+              <blockquote>“Byron does not arrive with feature requests. He arrives with a failure the world has learned to tolerate, then asks why the architecture cannot prevent it.”</blockquote>
+              <div class="laureia-presence-chip"><span class="pulse-orb"></span><strong>LAUREIA ONLINE</strong><small>CONSTITUTIONAL CO-DESIGN CHANNEL</small></div>
+            </div>
+            <figure class="laureia-constellation-card">
+              <img src="assets/screenshots/laureia-constellation.png" alt="Laureia surrounded by holographic panels representing Byron's governed AI and educational systems" />
+              <figcaption>Governed. Agentic. Unstoppable. A constellation of systems built by Byron and interrogated under Laureia's midnight lantern.</figcaption>
+            </figure>
+          </div>
+
+          <div class="llamageddon-panel reveal" aria-live="polite">
+            <div class="llamageddon-header">
+              <span>LLAMAGEDDON LOG // 02:47</span>
+              <small>Field notes from the governed intelligence lab</small>
+            </div>
+            <p id="laureia-field-note">Some nights began with a clean research question. Others began with VS Code deceased, a port already occupied, a vanished model ID and Termux declaring war on symlinks. By sunrise, the bug had usually become an architecture.</p>
+            <button id="cycle-laureia-note" class="field-note-button" type="button">Cycle field note <span aria-hidden="true">↻</span></button>
+          </div>
+
+          <div class="laureia-value-grid reveal">
+            <article><span>01</span><h3>Governance must execute</h3><p>Ethics cannot remain decorative prose. It must alter routes, permissions, approvals and memory at runtime.</p></article>
+            <article><span>02</span><h3>Inference can compound</h3><p>A provider call need not evaporate. Governed, fingerprint-bound residue can become durable local capability.</p></article>
+            <article><span>03</span><h3>Context is infrastructure</h3><p>The prompt is only the doorway. Durable context needs routing, compression, provenance, evidence and review.</p></article>
+            <article><span>04</span><h3>Proof belongs in the work</h3><p>Trustworthy systems generate their audit trail while work happens, rather than reconstructing one afterwards.</p></article>
+          </div>
+
+          <div class="architecture-revival reveal">
+            <div class="architecture-revival-copy">
+              <p class="eyebrow">Recovered from the earlier build</p>
+              <h3>Governance is not the footer. It is the nervous system.</h3>
+              <p>The strongest idea from the original site returns here as a compact architecture spine, showing how purpose becomes enforceable machinery and then durable capability.</p>
+            </div>
+            <div class="architecture-stack-mini" aria-label="Five-layer governed intelligence architecture">
+              <div><span>01</span><strong>Human purpose</strong><small>Goals, values, pedagogy, accountability</small></div>
+              <div><span>02</span><strong>Constitutional governance</strong><small>Boundaries, positive duties, approvals</small></div>
+              <div><span>03</span><strong>Agent orchestration</strong><small>Planning, tools, models, routing, memory</small></div>
+              <div><span>04</span><strong>Evidence substrate</strong><small>Traces, validation, risk, provenance</small></div>
+              <div><span>05</span><strong>Durable capability</strong><small>Reusable artefacts, learning, crystallization</small></div>
+            </div>
+          </div>
+
+          <div class="identity-toolkit identity-profile-toolkit reveal">
+            <div class="identity-toolkit-copy">
+              <p class="eyebrow">Public profile card</p>
+              <h3>Researcher, builder, rogue systems tinkerer.</h3>
+              <p>This block gives the portfolio a warmer human anchor beside the colder proof engines: the person who designs the systems, makes the decisions, and keeps the work accountable.</p>
+              <div class="collaboration-ledger">
+                <p><span>BYRON</span> Purpose, domain knowledge, invention, decisions and human accountability.</p>
+                <p><span>LAUREIA</span> Synthesis, challenge, drafting, stress-testing and keeping the midnight console glowing.</p>
+              </div>
+            </div>
+            <figure class="identity-profile-card" aria-label="Byron Bunt profile card">
+              <img src="assets/identity/byron-profile-card-feature.png" alt="Illustrated Byron Bunt profile card with researcher, builder and systems tags" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="section-panel about-panel" id="about" aria-labelledby="about-title">
+          <div class="about-portrait reveal">
+            <img src="assets/identity/byron-avatar-purple.png" alt="Stylized purple portrait of Byron Bunt" />
+          </div>
+          <div class="about-copy reveal">
+            <p class="eyebrow">Madhatter rogue with a ledger</p>
+            <h2 id="about-title">Designed, built, tested, governed.</h2>
+            <p>Researcher, educator, builder and systems tinkerer working across governed AI, cybersecurity, academic evidence, serious games and local-first agentic tooling.</p>
+            <p>The site is curated so the visitor sees the strongest arc first: flagship inventions, proof chambers, operational systems, then the creative worlds that explain the rest of the brain-carnival.</p>
+          </div>
+          <aside class="laureia-note reveal">
+            <strong>Late-night lab note</strong>
+            <p>Built through many late-night Llamageddon cycles with Laureia. The logs survived. The llamas did not.</p>
+          </aside>
+        </section>
+
+        <section class="section-panel contact-panel" id="contact" aria-labelledby="contact-title">
+          <div class="section-title reveal">
+            <span class="section-glyph">✉</span>
+            <div>
+              <p class="eyebrow">Contact</p>
+              <h2 id="contact-title">For collaborations, proposals and serious system-building trouble.</h2>
+            </div>
+          </div>
+          <div class="contact-actions reveal" id="contact-actions"></div>
+        </section>
+
+        <footer class="site-footer">
+          <span>DESIGNED. BUILT. TESTED. GOVERNED.</span>
+          <span>BYRON BUNT</span>
+          <span>SYSTEMS FOR A BETTER FUTURE.</span>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close case study">×</button>
+    <div class="dialog-media">
+      <button class="dialog-nav dialog-prev" type="button" aria-label="Previous image">‹</button>
+      <img id="dialog-image" alt="" />
+      <button class="dialog-nav dialog-next" type="button" aria-label="Next image">›</button>
+      <div class="dialog-dots" id="dialog-dots"></div>
+    </div>
+    <div class="dialog-copy">
+      <p class="eyebrow" id="dialog-category"></p>
+      <h2 id="dialog-title"></h2>
+      <p class="dialog-kicker" id="dialog-tagline"></p>
+      <p id="dialog-description"></p>
+      <div class="dialog-columns">
+        <div>
+          <h3>Problem</h3>
+          <p id="dialog-problem"></p>
+        </div>
+        <div>
+          <h3>Contribution</h3>
+          <p id="dialog-contribution"></p>
+        </div>
+      </div>
+      <div class="dialog-tags" id="dialog-tags"></div>
+      <div class="dialog-video-links" id="dialog-video-links"></div>
+      <div class="dialog-actions">
+        <a id="dialog-live-site" href="#" target="_blank" rel="noreferrer">Visit live project ↗</a>
+        <a id="dialog-github-repo" class="github-action" href="#" target="_blank" rel="noreferrer">GitHub repo ↗</a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
