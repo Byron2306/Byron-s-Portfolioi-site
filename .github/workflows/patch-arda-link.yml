@@ -1,0 +1,53 @@
+name: Patch ARDA live site link
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/patch-arda-link.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-arda-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Update ARDA live site URL
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('app.js')
+          text = path.read_text(encoding='utf-8')
+          old = 'siteUrl: "https://byron2306.github.io/Integritas-Mechanicus/",'
+          new = 'siteUrl: "https://byron2306.github.io/Arda-OS-page/",'
+
+          if new in text:
+              print('ARDA live site URL already updated.')
+          elif old in text:
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+              print('Updated ARDA live site URL.')
+          else:
+              raise SystemExit('ARDA siteUrl marker not found in app.js')
+          PY
+
+      - name: Commit change
+        shell: bash
+        run: |
+          git config user.name "portfolio-bot"
+          git config user.email "portfolio-bot@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No change needed."
+          else
+            git add app.js
+            git commit -m "Update ARDA live project link"
+            git push
+          fi
